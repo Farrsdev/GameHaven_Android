@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Game Haven</string>
+    <string name="title_activity_login_screen">LoginScreen</string>
+    <string name="title_activity_register_screen">RegisterScreen</string>
+    <string name="title_activity_nav_graph">NavGraph</string>
+    <string name="title_activity_nav_bar_user">NavBarUser</string>
+    <string name="title_activity_nav_bar_adm">NavBarAdm</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="title_activity_admin_user_screen">AdminUserScreen</string>
+    <string name="title_activity_add_edit_user_screen">AddEditUserScreen</string>
+    <string name="title_activity_admin_game_screen">AdminGameScreen</string>
+    <string name="title_activity_admin_analytic_screen">AdminAnalyticScreen</string>
+    <string name="title_activity_discover_screen">DiscoverScreen</string>
+    <string name="title_activity_user_store_screen">UserStoreScreen</string>
+    <string name="title_activity_user_payment_screen">UserPaymentScreen</string>
+    <string name="title_activity_user_my_game">UserMyGame</string>
+    <string name="title_activity_user_download_screen">UserDownloadScreen</string>
+    <string name="title_activity_user_profile_screen">UserProfileScreen</string>
+</resources>

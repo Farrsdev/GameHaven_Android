@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.GameHaven">
+        <activity
+            android:name=".ui.screen.user.UserProfileScreen"
+            android:exported="false"
+            android:label="@string/title_activity_user_profile_screen"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.user.UserDownloadScreen"
+            android:exported="false"
+            android:label="@string/title_activity_user_download_screen"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.user.UserMyGame"
+            android:exported="false"
+            android:label="@string/title_activity_user_my_game"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.user.UserPaymentScreen"
+            android:exported="false"
+            android:label="@string/title_activity_user_payment_screen"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.user.UserStoreScreen"
+            android:exported="false"
+            android:label="@string/title_activity_user_store_screen"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.user.DiscoverScreen"
+            android:exported="false"
+            android:label="@string/title_activity_discover_screen"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.admin.AdminAnalyticScreen"
+            android:exported="false"
+            android:label="@string/title_activity_admin_analytic_screen"
+            android:theme="@style/Theme.GameHaven" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".ui.screen.admin.AdminGameScreen"
+            android:exported="false"
+            android:label="@string/title_activity_admin_game_screen"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.admin.AddEditUserScreen"
+            android:exported="false"
+            android:label="@string/title_activity_add_edit_user_screen"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.admin.AdminUserScreen"
+            android:exported="false"
+            android:label="@string/title_activity_admin_user_screen"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.admin.HomeScreen"
+            android:exported="false"
+            android:label="@string/title_activity_home_screen"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.user.HomeScreen"
+            android:exported="false"
+            android:label="@string/title_activity_home_screen"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.component.NavBarAdm"
+            android:exported="false"
+            android:label="@string/title_activity_nav_bar_adm"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.component.NavBarUser"
+            android:exported="false"
+            android:label="@string/title_activity_nav_bar_user"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".NavGraph"
+            android:exported="false"
+            android:label="@string/title_activity_nav_graph"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.auth.RegisterScreen"
+            android:exported="false"
+            android:label="@string/title_activity_register_screen"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".ui.screen.auth.LoginScreen"
+            android:exported="false"
+            android:label="@string/title_activity_login_screen"
+            android:theme="@style/Theme.GameHaven" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.GameHaven">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
