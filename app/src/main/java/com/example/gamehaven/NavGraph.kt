@@ -162,18 +162,18 @@ fun AppNavGraph(
         }
 
         composable(Screen.User.route){
-           UserRoot()
+           UserRoot(rootNavController = nc)
         }
 
         composable(Screen.Admin.route) {
-           AdminRoot()
+           AdminRoot(rootNavController = nc)
         }
     }
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun UserRoot(modifier: Modifier = Modifier) {
+fun UserRoot(modifier: Modifier = Modifier,  rootNavController: NavHostController) {
     val userNavController = rememberNavController()
     val navBackStackEntry by userNavController.currentBackStackEntryAsState()
 
@@ -200,7 +200,11 @@ fun UserRoot(modifier: Modifier = Modifier) {
             modifier = modifier.padding(p),
             startDestination = "home"
         ){
-            composable("home") { HomeUiUser(navController = userNavController) }
+            composable("home") { HomeUiUser(navController = userNavController, onGoToLogout = {
+                rootNavController.navigate(Screen.Login.route) {
+                    popUpTo(0) { inclusive = true }
+                }
+            }) }
             composable("discover") { DiscoverUi(userNavController) }
             composable("store") {
                 Column(
@@ -285,9 +289,10 @@ fun UserRoot(modifier: Modifier = Modifier) {
         }
     }
 }
+
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun AdminRoot() {
+fun AdminRoot(rootNavController: NavHostController) {
     val adminNavController = rememberNavController()
     val navBackStackEntry by adminNavController.currentBackStackEntryAsState()
 
@@ -313,7 +318,17 @@ fun AdminRoot() {
             startDestination = "dashboard",
             modifier = Modifier.padding(padding)
         ) {
-            composable("dashboard") { HomeUiAdmin() }
+            composable("dashboard") { HomeUiAdmin(
+                onLogout = {
+                    rootNavController.navigate(
+                        Screen.Login.route
+                    ) {
+                        popUpTo(0) {
+                            inclusive = true
+                        }
+                    }
+                }
+            ) }
             composable("users") { AdminUserManagementScreen() }
             composable("games") { AdminGameManagementScreen() }
             composable("analytics") { AdminAnalyticScreen() }

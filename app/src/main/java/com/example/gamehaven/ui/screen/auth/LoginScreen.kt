@@ -242,20 +242,6 @@ fun LoginScreenContent(vm: UserViewModel, onGoToRegist : () -> Unit = {}, onLogi
                     }
                 }
 
-                // Forgot Password
-                TextButton(
-                    onClick = {
-                        scope.launch {
-                            snackbarHostState.showSnackbar("Forgot password functionality to be implemented")
-                        }
-                    },
-                    modifier = Modifier.padding(top = 16.dp)
-                ) {
-                    Text(
-                        text = "Forgot Password?",
-                        color = MaterialTheme.colorScheme.primary
-                    )
-                }
 
                 Spacer(modifier = Modifier.weight(1f))
 

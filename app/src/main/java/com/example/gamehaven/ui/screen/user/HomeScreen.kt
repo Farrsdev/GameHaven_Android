@@ -23,6 +23,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.TrendingUp
@@ -65,7 +66,7 @@ import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeUiUser(modif: Modifier = Modifier, navController: NavHostController? = null) {
+fun HomeUiUser(modif: Modifier = Modifier, navController: NavHostController? = null, onGoToLogout: () -> Unit  = {}) {
     val gameViewModel: GameViewModel = viewModel()
     val allGames by gameViewModel.allGames.observeAsState(initial = emptyList())
 
@@ -84,11 +85,8 @@ fun HomeUiUser(modif: Modifier = Modifier, navController: NavHostController? = n
                     )
                 },
                 actions = {
-                    IconButton(onClick = { /* Navigate to search */ }) {
-                        Icon(Icons.Default.Search, contentDescription = "Search")
-                    }
-                    IconButton(onClick = { /* Navigate to profile */ }) {
-                        Icon(Icons.Default.AccountCircle, contentDescription = "Profile")
+                    IconButton(onClick = { onGoToLogout() }) {
+                        Icon(Icons.Default.Logout, contentDescription = "Logout")
                     }
                 }
             )

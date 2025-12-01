@@ -50,13 +50,14 @@ fun MyGamesScreen(
     val purchasedGames by purchasedGameViewModel.getPurchasedGamesByUser(currentUserId).observeAsState(initial = emptyList())
     val allGames by gameViewModel.allGames.observeAsState(initial = emptyList())
 
-    // Combine purchased games with game details
+    val downloadProgressMap = remember { mutableStateMapOf<Int, Int>() }// Combine purchased games with game details
     val gamesWithDetails = remember(purchasedGames, allGames) {
         purchasedGames.map { purchased ->
             val game = allGames.find { it.id == purchased.gameId }
             PurchasedGameWithDetails(purchased, game)
         }.filter { it.game != null }
     }
+
 
     Scaffold(
         topBar = {
@@ -123,12 +124,28 @@ fun MyGamesScreen(
                                 DownloadStatus.DOWNLOADING
                             )
 
+                            downloadProgressMap[item.purchasedGame.id] = 0
+
                             CoroutineScope(Dispatchers.IO).launch {
-                                delay(3000)
-                                DownloadStatus.DOWNLOADED
+                                // Simulate download progress steps
+                                for (progress in 0..100 step 10) {
+                                    delay(300) // Delay 300ms per step (total 3 detik)
+                                    downloadProgressMap[item.purchasedGame.id] = progress
+                                }
+
+                                // Final delay dan update status
+                                delay(200)
+                                downloadProgressMap[item.purchasedGame.id] = 100
+
+                                // Update status to DOWNLOADED setelah selesai
+                                purchasedGameViewModel.updateDownloadStatus(
+                                    item.purchasedGame.id,
+                                    DownloadStatus.DOWNLOADED
+                                )
+
+                                // Clear progress setelah selesai
+                                downloadProgressMap.remove(item.purchasedGame.id)
                             }
-                             // Simulate download completion after 3 seconds
-                            // In real app, you'd use a proper download manager
                         },
                         onInstallClick = {
                             purchasedGameViewModel.updateDownloadStatus(
